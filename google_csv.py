@@ -14,7 +14,7 @@ def get_google_json(spreadsheet_key):
 	assert response.status_code == 200, 'Wrong status code'
 
 	# open csv and write csv response
-	f = open('google_csv.csv', 'w')
+	f = open('../../google_csv.csv', 'w')
 	f.write(response.content)
 	f.close()
 
@@ -30,7 +30,7 @@ def get_google_json(spreadsheet_key):
 	 ])
 
 	# parser instance
-	parser = csvmapper.CSVParser('google_csv.csv', mapper, hasHeader=True)
+	parser = csvmapper.CSVParser('../../google_csv.csv', mapper, hasHeader=True)
 	# conversion service
 	converter = csvmapper.JSONConverter(parser)
 
