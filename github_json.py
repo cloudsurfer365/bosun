@@ -2,31 +2,33 @@
 
 import requests
 import json
+import sys
 
-def get_github_json(git_user,git_repo,config_file):
+sys.path.append('../')
+from secrets import git_user, git_repo, git_branch, config_file
 
-	raw_config = requests.get('https://raw.githubusercontent.com/' + git_user + '/' + git_repo + '/master/data/' + config_file)
+def get_github_json(git_user,git_repo,git_branch,config_file):
+
+	raw_config = requests.get('https://raw.githubusercontent.com/' + git_user + '/' + git_repo + '/' + git_branch + '/data/' + config_file)
 
 	json_config = raw_config.text
 
 	return json_config
 
-def validate_json(git_user,git_repo,config_file):
+def validate_json(git_user,git_repo,git_branch,config_file):
 
-	response = requests.get('https://api.github.com/repos/' + git_user + '/' + git_repo + '/contents/data/' + config_file, auth=('kyokeefesally','Cese85!@#'))
+	response = requests.get('https://api.github.com/repos/' + git_user + '/' + git_repo + '/contents/data/' + config_file + '?ref=' + git_branch, auth=('kyokeefesally','Cese85!@#'))
 
 	json_data = json.loads(response.text)
 
 	file_name = json_data["name"]
 		
 	if '.json' in file_name:
+		#print('true')
 		return 'true'
 
 	else:
+		#print('false')
 		return 'false'
 
-git_user = 'kyokeefesally'
-git_repo = 'bosun'
-config_file = 'config.json'
-
-validate_json(git_user, git_repo, config_file)
+#validate_json(git_user, git_repo, git_branch, config_file)
