@@ -19,7 +19,7 @@ import json
 import urllib2
 
 from google_csv import get_google_json
-sys.path.append('../../')
+sys.path.append('../')
 from secrets import ip, un, pw
 
 
