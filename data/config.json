@@ -98,193 +98,193 @@
     {
       "mode": "access", 
       "name": "desk 02", 
-      "port": "Gi1/0/17", 
+      "port": "gi1/0/17", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "desk 02", 
-      "port": "Gi1/0/18", 
+      "port": "gi1/0/18", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "desk 02", 
-      "port": "Gi1/0/19", 
+      "port": "gi1/0/19", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "desk 03", 
-      "port": "Gi1/0/20", 
+      "port": "gi1/0/20", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "desk 03", 
-      "port": "Gi1/0/21", 
+      "port": "gi1/0/21", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "desk 03", 
-      "port": "Gi1/0/22", 
+      "port": "gi1/0/22", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "desk 03", 
-      "port": "Gi1/0/23", 
+      "port": "gi1/0/23", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "desk 03", 
-      "port": "Gi1/0/24", 
+      "port": "gi1/0/24", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "desk 03", 
-      "port": "Gi1/0/25", 
+      "port": "gi1/0/25", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "desk 03", 
-      "port": "Gi1/0/26", 
+      "port": "gi1/0/26", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "desk 03", 
-      "port": "Gi1/0/27", 
+      "port": "gi1/0/27", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "huddle VTC", 
-      "port": "Gi1/0/28", 
+      "port": "gi1/0/28", 
       "vlan": "11"
     }, 
     {
       "mode": "access", 
       "name": "huddle TV", 
-      "port": "Gi1/0/29", 
+      "port": "gi1/0/29", 
       "vlan": "11"
     }, 
     {
       "mode": "access", 
       "name": "huddle TV", 
-      "port": "Gi1/0/30", 
+      "port": "gi1/0/30", 
       "vlan": "11"
     }, 
     {
       "mode": "access", 
       "name": "dashTV 01 enplug", 
-      "port": "Gi1/0/31", 
+      "port": "gi1/0/31", 
       "vlan": "11"
     }, 
     {
       "mode": "access", 
       "name": "dashTV 01 airtame", 
-      "port": "Gi1/0/32", 
+      "port": "gi1/0/32", 
       "vlan": "70"
     }, 
     {
       "mode": "access", 
       "name": "dashTV 02 enplug", 
-      "port": "Gi1/0/33", 
+      "port": "gi1/0/33", 
       "vlan": "11"
     }, 
     {
       "mode": "access", 
       "name": "dashTV 02 airtame", 
-      "port": "Gi1/0/34", 
+      "port": "gi1/0/34", 
       "vlan": "70"
     }, 
     {
       "mode": "access", 
       "name": "pinup wall", 
-      "port": "Gi1/0/35", 
+      "port": "gi1/0/35", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "desk 04 island", 
-      "port": "Gi1/0/36", 
+      "port": "gi1/0/36", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "desk 04 island", 
-      "port": "Gi1/0/37", 
+      "port": "gi1/0/37", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "desk 04 island", 
-      "port": "Gi1/0/38", 
+      "port": "gi1/0/38", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "desk 04 island", 
-      "port": "Gi1/0/39", 
+      "port": "gi1/0/39", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "desk 04 island", 
-      "port": "Gi1/0/40", 
+      "port": "gi1/0/40", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "desk 04 island", 
-      "port": "Gi1/0/41", 
+      "port": "gi1/0/41", 
       "vlan": "76"
     }, 
     {
       "mode": "trunk", 
       "name": "conf table", 
-      "port": "Gi1/0/42", 
+      "port": "gi1/0/42", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "conf table", 
-      "port": "Gi1/0/43", 
+      "port": "gi1/0/43", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "speakers", 
-      "port": "Gi1/0/44", 
+      "port": "gi1/0/44", 
       "vlan": "70"
     }, 
     {
       "mode": "access", 
       "name": "projector", 
-      "port": "Gi1/0/45", 
+      "port": "gi1/0/45", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "projector", 
-      "port": "Gi1/0/46", 
+      "port": "gi1/0/46", 
       "vlan": "76"
     }, 
     {
       "mode": "access", 
       "name": "empty not in use", 
-      "port": "Gi1/0/47", 
+      "port": "gi1/0/47", 
       "vlan": "76"
     }, 
     {
       "mode": "trunk", 
       "name": "uplink", 
-      "port": "Gi1/0/48", 
+      "port": "gi1/0/48", 
       "vlan": "250"
     }
   ]
