@@ -1,4 +1,6 @@
-# switchmate
+# bosun
+
+Bosun is a set of JSON endpoints to interact with Cisco iOS devices via Netmiko SSH
 
 ## HTTP API
 
