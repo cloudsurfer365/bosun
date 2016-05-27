@@ -1,29 +1,30 @@
 #!/usr/bin/env python
 from __future__ import print_function
 import time
-from itertools import cycle
+#from itertools import cycle
 from functools import wraps
 from flask import Flask, Response, request, jsonify, render_template, Request, json
-import os
+#import os
 import sys
-import shlex, subprocess
+#import shlex, subprocess
 
 from netmiko import ConnectHandler
 import textfsm
-import texttable
+#import texttable
 import clitable
 import pprint
 
 import csv
 import json
-import urllib2
+#import urllib2
 
 from google_csv import get_google_json
+from github_json import get_github_json, validate_json
+
 sys.path.append('../')
 from secrets import ip, un, pw
 
 
-#import RPi.GPIO as io
 
 def jsonp(func):
     """Wraps JSONified output for JSONP requests."""
@@ -75,7 +76,7 @@ template_dir = 'textfsm_templates'
 #######################################
 
 # cisco ios show vlan brief
-@app.route("/show-vlan", methods=['GET'])
+@app.route("/show-switch/vlan", methods=['GET'])
 @jsonp
 def show_vlan():
 
@@ -111,7 +112,7 @@ def show_vlan():
 
 
 # cisco ios show interfaces status
-@app.route("/show-interfaces-status", methods=['GET'])
+@app.route("/show-switch/interfaces-status", methods=['GET'])
 @jsonp
 def show_interfaces_status():
 
@@ -145,9 +146,9 @@ def show_interfaces_status():
     # jsonify dictionary and return result
     return jsonify(interfaces=objs)
 
-# get switch config json from google speardsheet csv
-@app.route("/show-google-config", methods=['GET'])
 
+# get switch config json from google speardsheet csv
+@app.route("/show-config/google", methods=['GET'])
 def show_google_config():
     
     # get spreadsheet key from request param
@@ -163,7 +164,7 @@ def show_google_config():
     return jsonify(config=config)
 
 
-@app.route("/configure-switch-with-google-spreadsheet", methods=['GET'])
+@app.route("/configure-switch/google", methods=['GET'])
 def config_switch_google_csv():
 
     # get spreadsheet key from request param
@@ -182,8 +183,57 @@ def config_switch_google_csv():
     return send_config
 
 
+@app.route("/show-config/github", methods=['GET'])
+def show_github_config():
+    
+    # get github info from request param
+    git_user = request.args.get('git_user')
+    git_repo = request.args.get('git_repo')
+    git_branch = request.args.get('git_branch')
+    config_file = request.args.get('config_file')
+
+    # call get_github_json() to get switch config json from github config file (expects json file)
+    raw_config = get_github_json(git_user, git_repo, git_branch, config_file)
+
+    # create payload object
+    config = json.loads(raw_config)
+
+    # return JSONified switch config payload
+    return jsonify(config=config)
+
+
+@app.route("/configure-switch/github", methods=['GET'])
+def config_switch_github_config_file():
+
+    # get github info from request param
+    git_user = request.args.get('git_user')
+    git_repo = request.args.get('git_repo')
+    git_branch = request.args.get('git_branch')
+    config_file = request.args.get('config_file')
+
+    valid_config_file = validate_json(git_user, git_repo, git_branch, config_file)
+
+    if valid_config_file == 'true':
+
+        # call get_github_json() to get switch config json from github config file (expects json file)
+        raw_config = get_github_json(git_user, git_repo, git_branch, config_file)
+
+        # create payload object
+        config = json.loads(raw_config)
+
+        # send config payload to switch config endpoint
+        send_config = process_config_payload(config)
+
+        # process_config_payload() jsonifies output, so no need here
+        return send_config
+
+    elif valid_config_file == 'false':
+        error_message = 'file type must be .json'
+        return jsonify(error=error_message)
+
+
 # cisco ios show interfaces status
-@app.route("/configure-port", methods=['POST'])
+@app.route("/configure-switch/json", methods=['POST'])
 @jsonp
 
 # request config payload from POST
@@ -229,7 +279,7 @@ def process_config_payload(data):
         trunk_command = 'switchport trunk encapsulation dot1q'
 
         # assemble multiline Netmiko config payload
-        config_commands.append('interface gigabitEthernet ' + port)
+        config_commands.append('interface ' + port)
         config_commands.append(name_command)
         config_commands.append(vlan_command)
         config_commands.append(trunk_command)
@@ -248,7 +298,7 @@ def process_config_payload(data):
     # jsonify dictionary and return result
     return jsonify(message=output)
 
-@app.route("/write-mem", methods=['GET'])
+@app.route("/configure-switch/write-mem", methods=['GET'])
 def write_mem():
 
     # establish ssh connection
