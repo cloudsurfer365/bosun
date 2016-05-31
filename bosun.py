@@ -147,6 +147,42 @@ def show_interfaces_status():
     return jsonify(interfaces=objs)
 
 
+    # cisco ios show interfaces status
+@app.route("/show-switch/version", methods=['GET'])
+@jsonp
+def show_version():
+
+    # establish ssh connection
+    device = ConnectHandler(**switch)
+
+    # define show command to send to switch
+    command = 'show version'
+
+    # Execute show commands on the channel:
+    output = device.send_command(command)
+
+    # close ssh connection gracefully
+    device.disconnect()
+    
+    # Create CliTable object
+    cli_table = clitable.CliTable(index_file, template_dir)
+    attrs = {'Command': command, 'platform': device_type}
+
+    # Dynamically parse the output from the router against the template
+    cli_table.ParseCmd(output, attrs)
+
+    # Convert cli_table to Python Dictionary
+    objs = []
+    for row in cli_table:
+        temp_dict = {}
+        for index, element in enumerate(row):
+            temp_dict[cli_table.header[index].lower()] = element
+        objs.append(temp_dict)
+
+    # jsonify dictionary and return result
+    return jsonify(version=objs)
+
+
 # get switch config json from google speardsheet csv
 @app.route("/show-config/google", methods=['GET'])
 def show_google_config():
