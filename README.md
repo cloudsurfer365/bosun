@@ -1,6 +1,6 @@
 # bosun
 
-Bosun is a set of JSON endpoints to interact with Cisco iOS devices via Netmiko SSH
+A Flask API to interact with Cisco iOS devices via Netmiko SSH that enables programatic configuration and management of Cisco iOS switches.
 
 ## HTTP API
 
