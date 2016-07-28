@@ -2,6 +2,8 @@
 
 A Flask API to interact with Cisco iOS devices via Netmiko SSH that enables programatic configuration and management of Cisco iOS switches.
 
+Big thanks to [Jason Edelman](https://github.com/jedelman8) and his [ntc templates](https://github.com/networktocode/ntc-templates)!
+
 ## HTTP API
 
 ### Endpoints
