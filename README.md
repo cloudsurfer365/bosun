@@ -9,7 +9,7 @@ Big thanks to [Jason Edelman](https://github.com/jedelman8) and his [ntc templat
 ### Endpoints
 
 **show switch VLANs**<br>
-GET `http://localhost/show-switch/vlan`<br>
+GET `http://localhost/show-switch/vlan?host={{ host name }}`<br>
 
 Response Body
 
@@ -36,7 +36,7 @@ Response Body
 ```
 
 **show switch interfaces status**<br>
-GET `http://localhost/show-switch/interfaces-status`<br>
+GET `http://localhost/show-switch/interfaces-status?host={{ host name }}`<br>
 
 Response Body
 
@@ -123,7 +123,7 @@ Response Body
 ```
 
 **configure switch with google sheets spreadsheet template**<br>
-GET `http://localhost/configure-switch/google?spreadsheet_key={{ google spreadsheet key }}`<br>
+GET `http://localhost/configure-switch/google?spreadsheet_key={{ google spreadsheet key }}?host={{ host name }}`<br>
 
 Response Body
 
@@ -134,7 +134,7 @@ Response Body
 ```
 
 **configure switch with github configuration file**<br>
-GET `http://localhost/configure-switch/github?git_user={{ github username }}&git_repo={{ github repo }}&git_branch={{ github branch }}&config_file={{ config file name with extension }}`<br>
+GET `http://localhost/configure-switch/github?git_user={{ github username }}&git_repo={{ github repo }}&git_branch={{ github branch }}&config_file={{ config file name with extension }}?host={{ host name }}`<br>
 
 Response Body
 
@@ -145,7 +145,7 @@ Response Body
 ```
 
 **configure switch with json POST**<br>
-POST `http://localhost/configure-switch/json`<br>
+POST `http://localhost/configure-switch/json?host={{ host name }}`<br>
 
 Request Body
 
@@ -175,7 +175,7 @@ Response Body
 ```
 
 **write memory**<br>
-GET `http://localhost/configure-switch/write-mem`<br>
+GET `http://localhost/configure-switch/write-mem?host={{ host name }}`<br>
 
 Response Body
 
